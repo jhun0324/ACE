@@ -21,15 +21,17 @@ import numpy as np
 
 # Polynomial function of f and g
 
-x = [np.random.uniform(-10, 10, size = 300)]
-e = np.random.normal(0, 1, size = 300)
-y = np.power(0.5 * np.power(x[0], 2) - x[0] - 10.0 + 0.1*e, 1.0/3)
+x = [np.random.uniform(-5, 5, size = 500)]
+e = np.random.normal(0, 1, size = 500)
+y = np.exp(np.sin(x[0]) + e/2.0)
 
 print(x)
 print(y)
 
 ace_model = model.Model()
 ace_model.build_model_from_xy(x, y)
+pred = ace_model.eval([-2])
+print(pred)
 
 ace.plot_transforms(ace_model.ace, fname = 'transforms.pdf')
 
